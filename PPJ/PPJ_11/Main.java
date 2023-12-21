@@ -93,13 +93,47 @@ public class Main {
             phraseArray.addWordAtEnd(word3);
 
             phraseArray.show();
+
+            System.out.println();
+
+            PhraseSinglyLinkedList phraseSinglyLinkedList = new PhraseSinglyLinkedList();
+
+            phraseSinglyLinkedList.addWordAtEnd(word1);
+            phraseSinglyLinkedList.addWordAtEnd(word2);
+            phraseSinglyLinkedList.addWordAtEnd(word3);
+
+            phraseSinglyLinkedList.show();
         }
 
         System.out.println("Task 5: ");
 
         // Task 5
         {
+            Rectangle rectangle = new Rectangle(5, 6);
+            System.out.println(rectangle.getArea());
 
+            System.out.println();
+
+            Cuboid cuboid = new Cuboid(5, 6, 7);
+            System.out.println(cuboid.getArea());
+            System.out.println(cuboid.getVolume());
+
+            System.out.println();
+
+            Triangle triangle = new Triangle(4);
+            System.out.println(triangle.getArea());
+
+            System.out.println();
+
+            Pyramid pyramid = new Pyramid(5, 6);
+            System.out.println(pyramid.getArea());
+            System.out.println(pyramid.getVolume());
+
+            System.out.println();
+
+            Prism prism = new Prism(8, 6);
+            System.out.println(prism.getArea());
+            System.out.println(prism.getVolume());
         }
     }
 }
