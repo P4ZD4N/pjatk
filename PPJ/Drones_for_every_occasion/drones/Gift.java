@@ -1,3 +1,5 @@
+package drones;
+
 public class Gift {
     private String nameOfContent;
     private double weight;
@@ -16,14 +18,14 @@ public class Gift {
         if (isReadyToBeDelivered) {
             isReadyToBeDelivered = false;
             System.out.println(
-                    "Unpacked Gift{" +
+                    "Unpacked drones.Gift{" +
                             "nameOfContent='" + nameOfContent + '\'' +
                             ", weight=" + weight +
                             ", isReadyToBeDelivered=" + isReadyToBeDelivered +
                             '}'
             );
         } else {
-            System.out.println("Gift is already unpacked!");
+            System.out.println("drones.Gift is already unpacked!");
         }
     }
 

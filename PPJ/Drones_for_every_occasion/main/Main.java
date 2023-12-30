@@ -1,3 +1,7 @@
+package main;
+
+import drones.*;
+
 import java.util.Arrays;
 
 public class Main {
@@ -31,17 +35,17 @@ public class Main {
 
         VampireDrone vampireDrone1 = new VampireDrone(5, 68);
 
-        System.out.println(drone1.toString());
-        System.out.println(vampireDrone1.toString());
+        System.out.println(drone1);
+        System.out.println(vampireDrone1);
 
         vampireDrone1.drainEnergy(drone1);
 
-        System.out.println(drone1.toString());
-        System.out.println(vampireDrone1.toString());
+        System.out.println(drone1);
+        System.out.println(vampireDrone1);
 
         vampireDrone1.turnIntoBatDrone();
 
-        System.out.println(vampireDrone1.toString());
+        System.out.println(vampireDrone1);
         vampireDrone1.drainEnergy(drone2);
 
         // GIFT / CHRISTMAS DRONE
@@ -62,6 +66,8 @@ public class Main {
 
         DroneControlRoom droneControlRoom = new DroneControlRoom(new Drone[] {drone1, drone2, drone3}, 6);
 
+        System.out.println(droneControlRoom.countDronesThatCanFly());
+
         droneControlRoom.sortAllDrones();
         droneControlRoom.chargeAllDrones();
         droneControlRoom.sortAllDrones();
@@ -72,5 +78,41 @@ public class Main {
 
         droneControlRoom.findMostPowerful(0, droneControlRoom.getAllDrones()[0]);
 
+        // WEATHER DRONE
+        System.out.println("Weather drone:");
+
+        WeatherDrone weatherDrone = new WeatherDrone(1, "Tsu", 4.5, 40, 100);
+        Weather weather = new Weather(21, 50, 23.4);
+
+        weather.sendDataTo(weatherDrone);
+        weatherDrone.transmitWeatherReport();
+
+        weather.setTemperature(20);
+        weather.setHumidity(40);
+        weather.setWindSpeed(16);
+        weather.sendDataTo(weatherDrone);
+
+        weather.setTemperature(22);
+        weather.setHumidity(38);
+        weather.setWindSpeed(12);
+        weather.sendDataTo(weatherDrone);
+
+        weather.setTemperature(25);
+        weather.setHumidity(37);
+        weather.setWindSpeed(14);
+        weather.sendDataTo(weatherDrone);
+
+        weatherDrone.transmitWeatherReport();
+
+        System.out.println(Arrays.toString(weatherDrone.getTemperatureHistory()));
+        System.out.println(Arrays.toString(weatherDrone.getHumidityHistory()));
+        System.out.println(Arrays.toString(weatherDrone.getWindSpeedHistory()));
+
+        weatherDrone.transmitWeatherReport();
+        weatherDrone.analyzeAtmosphericConditions();
+
+        weatherDrone.calculateAverageTemperature(0, 0);
+        weatherDrone.calculateAverageHumidity(0, 0);
+        weatherDrone.calculateAverageWindSpeed(0, 0);
     }
 }

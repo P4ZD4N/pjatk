@@ -1,3 +1,5 @@
+package drones;
+
 public class Drone {
     private int uniqueId;
     private String name;
@@ -20,9 +22,9 @@ public class Drone {
     public void fly(double distance) {
         if (batteryLevel >= distance) {
             batteryLevel = -distance;
-            System.out.println("Drone is flying!");
+            System.out.println("drones.Drone is flying!");
         } else {
-            System.out.println("Drone can't fly at this moment!");
+            System.out.println("drones.Drone can't fly at this moment!");
         }
 
     }

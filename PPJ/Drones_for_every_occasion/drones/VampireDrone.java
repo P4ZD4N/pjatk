@@ -1,3 +1,5 @@
+package drones;
+
 public class VampireDrone {
     private final String construcktor = "Bram Stoker";
     private boolean isTransformed = false;
@@ -11,7 +13,7 @@ public class VampireDrone {
 
     public void drainEnergy(Drone drone) {
         if (isTransformed) {
-            System.out.println("This drone is Bat Drone!");
+            System.out.println("This drone is Bat drones.Drone!");
         } else {
             double drainedEnergy = drone.getBatteryLevel() / 2;
             drone.setBatteryLevel(drone.getBatteryLevel() - drainedEnergy);
@@ -24,7 +26,7 @@ public class VampireDrone {
         isTransformed = true;
         batteryLevel /= 2;
         weight /= 2;
-        System.out.println("I am Bat Drone now!");
+        System.out.println("I am Bat drones.Drone now!");
     }
 
     @Override

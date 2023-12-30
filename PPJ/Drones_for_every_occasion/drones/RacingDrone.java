@@ -1,3 +1,5 @@
+package drones;
+
 public class RacingDrone {
     private String racingTeam;
     private int positionInRanking;
