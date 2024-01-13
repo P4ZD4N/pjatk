@@ -1,8 +1,6 @@
 public class JoinMeLuke {
-    private String[] mergedArray;
-
     public static String[] mergeArrays(String[] firstArray, String[] secondArray) {
-        this.mergedArray = new String[firstArray.length + secondArray.length];
+        String[] mergedArray = new String[firstArray.length + secondArray.length];
 
         for (int i = 0; i < firstArray.length; i++)
             mergedArray[i] = firstArray[i];
