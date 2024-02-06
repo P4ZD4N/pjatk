@@ -1,3 +1,5 @@
+package tasks;
+
 public class JoinMeLuke {
     public static String[] mergeArrays(String[] firstArray, String[] secondArray) {
         String[] mergedArray = new String[firstArray.length + secondArray.length];

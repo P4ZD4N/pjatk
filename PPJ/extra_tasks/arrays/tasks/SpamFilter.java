@@ -1,3 +1,5 @@
+package tasks;
+
 public class SpamFilter {
     private String[] info;
     private String[] keywords;

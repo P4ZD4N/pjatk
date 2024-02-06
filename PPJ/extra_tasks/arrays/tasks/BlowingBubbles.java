@@ -1,3 +1,5 @@
+package tasks;
+
 public class BlowingBubbles {
     public static void sort(int[] numbers) {
         int sorts;

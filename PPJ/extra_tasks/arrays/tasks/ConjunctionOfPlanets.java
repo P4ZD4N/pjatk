@@ -1,3 +1,5 @@
+package tasks;
+
 public class ConjunctionOfPlanets {
     private String[] planets1;
     private String[] planets2;
