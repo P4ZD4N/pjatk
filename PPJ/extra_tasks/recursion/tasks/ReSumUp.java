@@ -1,3 +1,5 @@
+package tasks;
+
 public class ReSumUp {
     private static int index = 0;
     private static int sum = 0;

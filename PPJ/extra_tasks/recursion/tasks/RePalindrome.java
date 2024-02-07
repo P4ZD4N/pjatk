@@ -1,3 +1,5 @@
+package tasks;
+
 public class RePalindrome {
     private static int index = 0;
     private static boolean wasMethodPerformed = false;

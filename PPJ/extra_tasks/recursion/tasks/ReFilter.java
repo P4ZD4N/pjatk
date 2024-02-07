@@ -1,3 +1,5 @@
+package tasks;
+
 public class ReFilter {
     public static int nextNumber = 0;
     public static int nextNumberInFilteredArray = 0;
