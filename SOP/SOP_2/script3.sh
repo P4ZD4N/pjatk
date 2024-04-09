@@ -14,8 +14,6 @@ fi
 read -p "Enter B: " B
 read -p "Enter C: " C
 
-
-
 echo "$A""a + $B""b + $C""c = 0"
 
 DISCRIMINANT=$(($B ** 2 - 4 * $A * $C))
