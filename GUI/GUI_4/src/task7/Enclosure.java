@@ -17,4 +17,14 @@ public class Enclosure<T extends AAnimal> {
     public ArrayList<T> getEnclosure() {
         return animalList;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder animalsStingBuilder = new StringBuilder();
+
+        for (AAnimal animal : animalList)
+            animalsStingBuilder.append(animal.getName());
+
+        return "Enclosure{" + "animalList=" + animalsStingBuilder + '}';
+    }
 }

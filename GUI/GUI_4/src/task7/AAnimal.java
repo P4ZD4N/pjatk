@@ -1,11 +1,13 @@
 package task7;
 
+import task7.enums.Group;
+
 public abstract class AAnimal {
 
     private String name;
-    private String group;
+    private Group group;
 
-    public AAnimal(String name, String group) {
+    public AAnimal(String name, Group group) {
         this.name = name;
         this.group = group;
     }
@@ -18,11 +20,11 @@ public abstract class AAnimal {
         this.name = name;
     }
 
-    public String getGroup() {
+    public Group getGroup() {
         return group;
     }
 
-    public void setGroup(String group) {
+    public void setGroup(Group group) {
         this.group = group;
     }
 

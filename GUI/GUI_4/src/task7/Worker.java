@@ -8,12 +8,20 @@ public class Worker {
         this.name = name;
     }
 
-    public void cleanAnimal(AAnimal animal) {
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void cleanAnimal(AAnimal animal) {
+        System.out.println(animal.getName() + " cleaned!");
     }
 
     public void feedAnimal(AAnimal animal) {
-
+        System.out.println(animal.getName() + " fed!");
     }
 
     @Override
