@@ -72,7 +72,7 @@ public class Coach extends Employee implements GoodEmployee {
 
         employee.addSkill(skill);
 
-        System.out.println(this.getFirstName() + " taught " + employee.getFirstName() + skill + " skill!");
+        System.out.println(this.getFirstName() + " taught " + employee.getFirstName() + " " + skill + " skill!");
     }
 
     @Override
