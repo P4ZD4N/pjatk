@@ -3,8 +3,8 @@ package app;
 import enums.Approval;
 import exceptions.SickEmployeeException;
 import exceptions.SickManagerException;
+import exceptions.TaskNotApprovedException;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -74,12 +74,12 @@ public class Work implements Runnable {
             if (task.getApproval() == Approval.APPROVED) {
                 team.getManager().addPastTask(task);
 
-                for (Employee employee :team.getEmployees())
+                for (Employee employee : team.getEmployees())
                     employee.addPastTask(task);
 
                 task.start();
             } else {
-                System.out.println("Task '" + task.getTaskName() + "' is not approved!");
+                throw new TaskNotApprovedException(task);
             }
         }
     }
@@ -92,5 +92,15 @@ public class Work implements Runnable {
         for (Employee employee : team.getEmployees())
             if (!employee.isHealthy())
                 throw new SickEmployeeException(employee);
+    }
+
+    @Override
+    public String toString() {
+        return "Work{" +
+                "id=" + id +
+                ", tasks=" + tasks +
+                ", description='" + description + '\'' +
+                ", team=" + team +
+                '}';
     }
 }
