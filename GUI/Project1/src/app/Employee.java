@@ -26,7 +26,11 @@ public abstract class Employee implements Comparable<Employee> {
         this.lastName = lastName;
         this.birthDate = birthDate;
         this.department = department;
-        this.skills = skills;
+        this.skills = new ArrayList<>();
+
+        if (skills != null && !skills.isEmpty()) {
+            this.skills.addAll(skills);
+        }
 
         allEmployees.add(this);
     }
