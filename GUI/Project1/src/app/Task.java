@@ -117,7 +117,7 @@ public class Task extends Thread {
         System.out.println("Task " + name + " completed!");
 
         status = Status.FINISHED;
-        dateFinished = LocalDateTime.now().plusSeconds(executionTime);
+        dateFinished = LocalDateTime.now();
     }
 
     @Override
