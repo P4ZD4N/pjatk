@@ -6,7 +6,6 @@ import exceptions.AlreadyOwnedSkillException;
 import exceptions.MissingSkillException;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class Coach extends Employee implements GoodEmployee {
 
@@ -20,11 +19,10 @@ public class Coach extends Employee implements GoodEmployee {
         String lastName,
         LocalDate birthDate,
         EmployeeDepartment department,
-        String specialization,
-        List<Skill> skills
+        String specialization
     ) {
 
-        super(firstName, lastName, birthDate, department, skills);
+        super(firstName, lastName, birthDate, department);
         this.id = ++counter;
         this.specialization = specialization;
     }
