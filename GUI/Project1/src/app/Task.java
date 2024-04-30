@@ -4,6 +4,7 @@ import enums.Approval;
 import enums.Status;
 
 import java.time.LocalDateTime;
+import java.util.Random;
 
 public class Task extends Thread {
 
@@ -14,7 +15,7 @@ public class Task extends Thread {
     private String description;
     private Status status = Status.CREATED;
     private Approval approval;
-    private int executionTime = (int) (Math.random() * (8 - 3 + 1) + 3);
+    private int executionTime = new Random().nextInt(6) + 3;
     private LocalDateTime dateCreated = LocalDateTime.now();
     private LocalDateTime dateFinished;
 
@@ -30,6 +31,8 @@ public class Task extends Thread {
 
         this.id = ++counter;
         this.name = name;
+        this.description = "No description";
+        this.approval = Approval.NOT_APPROVED;
     }
 
     public int getTaskId() {
@@ -50,10 +53,6 @@ public class Task extends Thread {
 
     public Status getStatus() {
         return status;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
     }
 
     public String getDescription() {
@@ -103,7 +102,7 @@ public class Task extends Thread {
 
         while (executionTime > 0) {
 
-            System.out.println(executionTime + " seconds remaining to complete task!");
+            System.out.println(executionTime + " seconds remaining to complete task '" + this.getTaskName() + "'!");
 
             try {
                 Thread.sleep(1000);
@@ -114,7 +113,7 @@ public class Task extends Thread {
             executionTime--;
         }
 
-        System.out.println("Task " + name + " completed!");
+        System.out.println("Task '" + name + "' completed!");
 
         status = Status.FINISHED;
         dateFinished = LocalDateTime.now();
