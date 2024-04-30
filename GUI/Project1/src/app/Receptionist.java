@@ -6,7 +6,6 @@ import exceptions.AlreadyOwnedSkillException;
 import exceptions.MissingSkillException;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class Receptionist extends Employee implements GoodEmployee {
 
@@ -23,11 +22,10 @@ public class Receptionist extends Employee implements GoodEmployee {
         LocalDate birthDate,
         EmployeeDepartment department,
         String login,
-        String password,
-        List<Skill> skills
+        String password
     ) {
 
-        super(firstName, lastName, birthDate, department, skills);
+        super(firstName, lastName, birthDate, department);
         this.id = ++counter;
         this.login = login;
         this.password = password;
