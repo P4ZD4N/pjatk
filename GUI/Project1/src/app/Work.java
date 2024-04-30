@@ -1,9 +1,6 @@
 package app;
 
 import enums.Approval;
-import exceptions.SickEmployeeException;
-import exceptions.SickManagerException;
-import exceptions.TaskNotApprovedException;
 
 import java.util.HashMap;
 import java.util.List;
@@ -68,9 +65,13 @@ public class Work implements Runnable {
     @Override
     public void run() {
 
-        isSomeoneSick();
-
         for (Task task : tasks) {
+
+            if (isSomeoneSick()) {
+                System.out.println("Someone in team is sick, so this task '" + task.getTaskName() + "' is ommited!");
+                continue;
+            }
+
             if (task.getApproval() == Approval.APPROVED) {
                 team.getManager().addPastTask(task);
 
@@ -78,20 +79,28 @@ public class Work implements Runnable {
                     employee.addPastTask(task);
 
                 task.start();
+
+                try {
+                    task.join();
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             } else {
-                throw new TaskNotApprovedException(task);
+                System.out.println("Task '" + task.getTaskName() + "' is not approved! This task was omitted!");
             }
         }
     }
 
-    private void isSomeoneSick() {
+    private boolean isSomeoneSick() {
 
         if (!team.getManager().isHealthy())
-            throw new SickManagerException(team.getManager());
+            return true;
 
         for (Employee employee : team.getEmployees())
             if (!employee.isHealthy())
-                throw new SickEmployeeException(employee);
+                return true;
+
+        return false;
     }
 
     @Override
