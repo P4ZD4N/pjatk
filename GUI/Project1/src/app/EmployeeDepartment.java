@@ -57,6 +57,11 @@ public class EmployeeDepartment {
 
         List<Employee> allEmployees = Employee.getAllEmployees();
 
+        if (allEmployees.isEmpty()) {
+            System.out.println("No employees!");
+            return;
+        }
+
         System.out.println("Employees of '" + this.getName() + "' department:");
 
         for (Employee employee : allEmployees) {
