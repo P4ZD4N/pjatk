@@ -18,29 +18,20 @@ public abstract class Employee implements Comparable<Employee> {
     private EmployeeDepartment department;
     private boolean isHealthy = true;
     private List<Task> allPastTasks = new ArrayList<>();
-    private List<Skill> skills;
+    private List<Skill> skills = new ArrayList<>();
 
-    public Employee(String firstName, String lastName, LocalDate birthDate, EmployeeDepartment department, List<Skill> skills) {
+    public Employee(String firstName, String lastName, LocalDate birthDate, EmployeeDepartment department) {
         this.id = ++counter;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
         this.department = department;
-        this.skills = new ArrayList<>();
-
-        if (skills != null && !skills.isEmpty()) {
-            this.skills.addAll(skills);
-        }
 
         allEmployees.add(this);
     }
 
     public static List<Employee> getAllEmployees() {
         return allEmployees;
-    }
-
-    public static void setAllEmployees(List<Employee> allEmployees) {
-        Employee.allEmployees = allEmployees;
     }
 
     public int getId() {
