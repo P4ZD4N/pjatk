@@ -1,7 +1,5 @@
 package app;
 
-import enums.Skill;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,11 +18,10 @@ public class Manager extends Receptionist {
         LocalDate birthDate,
         EmployeeDepartment department,
         String login,
-        String password,
-        List<Skill> skills
+        String password
     ) {
 
-        super(firstName, lastName, birthDate, department, login, password, skills);
+        super(firstName, lastName, birthDate, department, login, password);
         this.id = ++counter;
     }
 
