@@ -7,21 +7,31 @@ import java.util.Random;
 public class Captain {
 
     private static List<Policeman> policemanList = new ArrayList<>();
+    private static boolean isBanditCaught = false;
 
     public static void addToPolicemanList(Policeman policeman) {
 
         policemanList.add(policeman);
     }
 
-    public void startAll() throws InterruptedException {
+    public static void startAll() throws InterruptedException {
+
+        if (isBanditCaught) {
+            isBanditCaught = false;
+        }
 
         for (Policeman policeman : policemanList) {
 
             policeman.start();
+            policeman.join();
+        }
+
+        if (!isBanditCaught) {
+            System.out.println("Bandit still did not caught!");
         }
     }
 
-    public void stopAll() {
+    public static void stopAll() {
 
         for (Policeman policeman : policemanList) {
 
@@ -29,7 +39,7 @@ public class Captain {
         }
     }
 
-    public void changeShifts() throws InterruptedException {
+    public static void changeShifts() throws InterruptedException {
 
         for (int i = 0; i < policemanList.size(); i++) {
 
@@ -45,5 +55,9 @@ public class Captain {
 
     public static List<Policeman> getPolicemanList() {
         return policemanList;
+    }
+
+    public static void setIsBanditCaught(boolean isBanditCaught) {
+        Captain.isBanditCaught = isBanditCaught;
     }
 }
