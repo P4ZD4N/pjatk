@@ -3,8 +3,6 @@ package task2;
 public class Main {
     public static void main(String[] args) throws InterruptedException {
 
-        Captain captain = new Captain();
-
         Bandit bandit = Bandit.createBandit();
 
         Policeman policeman1 = new Policeman("Andrzej", "Śródmieście");
@@ -14,8 +12,6 @@ public class Main {
         Policeman policeman5 = new Policeman("Jakub", "Ursynów");
 
         bandit.start();
-        captain.startAll();
-        // captain.stopAll();
-        captain.changeShifts();
+        Captain.startAll();
     }
 }
