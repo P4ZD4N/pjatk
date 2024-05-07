@@ -29,7 +29,10 @@ public class Policeman extends Thread {
             int number = random.nextInt(11);
 
             if (number == 1) {
+
                 Bandit.setFree(false);
+                Captain.stopAll();
+                Captain.setIsBanditCaught(true);
                 System.out.println(firstName + " caught bandit!");
             }
 
