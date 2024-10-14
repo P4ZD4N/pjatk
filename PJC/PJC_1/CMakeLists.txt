@@ -3,5 +3,4 @@ project(PJC_1)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(PJC_1 1.cpp 2.cpp main.cpp
-        3.cpp)
+add_executable(PJC_1 1.cpp 2.cpp main.cpp 3.cpp 4.cpp)
