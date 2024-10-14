@@ -6,7 +6,7 @@ auto translation() -> void {
 
     using namespace std;
 
-    int digit;
+    auto digit = -1;
 
     while(digit < 0 || digit > 9) {
         cout << "Enter single digit: ";
