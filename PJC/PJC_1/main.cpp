@@ -5,6 +5,9 @@ auto operations() -> void;
 auto translation() -> void;
 auto comparing() -> void;
 auto sumOfTwo(std::vector<int> numbers, int val) -> bool;
+auto welcome() -> void;
+auto guessTheNumber() -> void;
+auto verifyPrimeNumbers() -> void;
 
 auto main() -> int {
 
@@ -12,11 +15,14 @@ auto main() -> int {
 
     auto choice = -1;
 
-    while(choice < 0 || choice > 3) {
+    while(choice < 0 || choice > 6) {
         cout << "[0] Basic operations on text variables" << '\n';
         cout << "[1] Digits translation" << '\n';
         cout << "[2] Comparing entered values" << '\n';
         cout << "[3] Finding pair of numbers with a concrete sum" << '\n';
+        cout << "[4] Welcome" << '\n';
+        cout << "[5] Guess the number" << '\n';
+        cout << "[6] Verify prime numbers" << '\n';
         cout << "Choose program: ";
         cin >> choice;
     }
@@ -56,6 +62,18 @@ auto main() -> int {
 
             cout << sumOfTwo(numbers, val);
         }
+        break;
+
+        case 4:
+            welcome();
+        break;
+
+        case 5:
+            guessTheNumber();
+        break;
+
+        case 6:
+            verifyPrimeNumbers();
         break;
 
         default: cout << "Incorrect input!";
