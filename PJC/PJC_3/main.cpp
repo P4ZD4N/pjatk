@@ -95,9 +95,15 @@ auto main() -> int {
                 "file30.txt", "file4.txt", "file40.txt",
             };
 
+            auto filePartNames = std::vector<std::string>{
+                "file1_part30.txt", "file10_part10.txt", "file10_part2.txt",
+                "file2_part1.txt", "file20_part21.txt", "file3_part1.txt",
+                "file0_part30.txt", "file0_part0.txt", "file101_part101.txt"
+            };
 
             fmt::println("{}", naturalSort(lectureNames));
             fmt::println("{}", naturalSort(fileNames));
+            fmt::println("{}", naturalSort(filePartNames));
         } break;
 
         default: fmt::print("Invalid input!");
