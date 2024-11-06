@@ -1,0 +1,1 @@
+SELECT ename, (sal + 250) * 12 AS "Annual Salary" FROM EMP;

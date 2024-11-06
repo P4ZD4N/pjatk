@@ -1,0 +1,1 @@
+SELECT * FROM EMP ORDER BY deptno ASC, sal DESC;

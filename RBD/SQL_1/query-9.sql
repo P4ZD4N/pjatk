@@ -1,0 +1,1 @@
+SELECT ename, sal * 12 + NVL(comm, 0) AS "Roczne zarobki z prowizja" FROM EMP;

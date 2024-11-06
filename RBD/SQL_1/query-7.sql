@@ -1,0 +1,1 @@
+SELECT empno || ' ' || ename AS "Zatrudniony" FROM EMP;

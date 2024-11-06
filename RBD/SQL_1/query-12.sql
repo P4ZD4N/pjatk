@@ -1,0 +1,1 @@
+SELECT DISTINCT deptno, job FROM EMP;

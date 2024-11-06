@@ -1,0 +1,1 @@
+SELECT deptno, ename, mgr FROM EMP;

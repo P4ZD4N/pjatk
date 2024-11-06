@@ -1,0 +1,1 @@
+SELECT 'Pracownik ' || empno || ' ' || ename || ' pracuje w dziale nr ' || deptno AS "Informacje o pracownikach" FROM EMP;

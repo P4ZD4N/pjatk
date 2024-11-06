@@ -1,0 +1,1 @@
+SELECT deptno FROM EMP WHERE deptno IS NOT NULL;
