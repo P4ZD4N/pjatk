@@ -9,7 +9,7 @@ auto boxPrint(std::vector<std::string> words, char border = '*') -> void;
 auto reversedWords(const std::string &sentence) -> std::string;
 auto manipulation() -> void;
 auto example(std::vector<std::string> left, std::vector<std::string> right) -> void;
-
+auto largestAnagramGroupsFrom(const std::string& text) -> std::vector<std::vector<std::string>>;
 
 namespace pjc::ranges {
     auto sort(const std::vector<int> numbers) -> std::vector<int> {
@@ -92,7 +92,7 @@ auto main() -> int {
 
     auto choice = -1;
 
-    while(choice < 0 || choice > 9) {
+    while(choice < 0 || choice > 10) {
         cout << "[0] Box print" << '\n';
         cout << "[1] Reversed words" << '\n';
         cout << "[2] Manipulation of data display format" << '\n';
@@ -102,6 +102,7 @@ auto main() -> int {
         cout << "[6] Cutting ranges" << '\n';
         cout << "[7] Flattening ranges" << '\n';
         cout << "[8] find_if extension" << '\n';
+        cout << "[9] Largest anagram groups from" << '\n';
         cout << "Choose program: ";
         cin >> choice;
     }
@@ -213,6 +214,17 @@ auto main() -> int {
             fmt::println("{} - {}", set1, pjc::ranges::findAllIf(set1, [](const int n) {
                 return n > 5;
             }));
+        } break;
+
+        case 9: {
+            const auto text = "In life, we find ourselves perplexed By twists and turns, and what comes next We wonder where our path will lead "
+                        "And hope for guidance, in our need But sometimes all we need to do Is simply change our point of view For “listen” "
+                        "can become “silent” too And “love” can turn into “vole” anew There’s “evil” hiding in “live” And “cinema” in “iceman” "
+                        "lives To look for the positive, and let our hearts be lighter But let’s focus on the good, and be a little kinder "
+                        "We can find “heart” in “earth” below And “care” in “race” - it’s apropos “Strained” can be “disrate,” and that’s okay "
+                        "For tomorrow is a brand new day So let’s embrace the twists and turns And all the lessons that life confirms For every "
+                        "problem, there’s a clue And an anagram to guide us through. For completeness, let’s add few more made-up, words: elov arce";
+            fmt::println("{}", largestAnagramGroupsFrom(text));
         } break;
 
         default: cout << "Incorrect input!";

@@ -13,7 +13,5 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(fmt)
 
-add_executable(core main.cpp 1.cpp 2.cpp
-        3.cpp
-        4.cpp)
+add_executable(core main.cpp 1.cpp 2.cpp 3.cpp 4.cpp 5.cpp)
 target_link_libraries(core fmt)
