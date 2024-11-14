@@ -1,0 +1,4 @@
+5 3 4 6 7 8 9 1 2
+siema siema siema siema siema siema siema siema siema 4 2 6 8 5 3 7 9 1
+siema siema siema siema siema siema siema siema siema 3 4 5 2 8 6 1 7 9
+siema siema siema siema siema siema siema siema siema 
