@@ -16,5 +16,6 @@ FetchContent_MakeAvailable(fmt)
 add_executable(PJC_6 main.cpp
         1.cpp
         2.cpp
-        3.cpp)
+        3.cpp
+        4.cpp)
 target_link_libraries(PJC_6 fmt)

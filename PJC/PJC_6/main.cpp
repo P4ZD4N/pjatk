@@ -7,15 +7,17 @@
 auto analyzeFile(const std::string& absolutePath) -> void;
 auto findCorrectSudoku(const std::string& absolutePath) -> void;
 auto changeFileContent(std::fstream& file, const std::string& changeTo) -> void;
+auto printNumberOfFilesInFolder(const std::string& absolutePath) -> void;
 
 auto main() -> int {
 
     auto choice = -1;
 
-    while (choice < 0 || choice > 3) {
+    while (choice < 0 || choice > 4) {
         fmt::println("[0] Numbers in file analysis");
         fmt::println("[1] Find correct sudoku");
         fmt::println("[2] Change file content");
+        fmt::println("[3] Print number of files in folder");
         fmt::print("Choose program: ");
         std::cin >> choice;
     }
@@ -64,7 +66,22 @@ auto main() -> int {
             changeFileContent(file, "siema");
         } break;
 
+        case 3: {
+
+            auto absolutePath = std::string();
+            fmt::print("Enter absolute path to folder: ");
+            std::cin >> absolutePath;
+
+            if (!exists(std::filesystem::path(absolutePath))) {
+                fmt::println("Folder does not exist!");
+                break;
+            }
+
+            printNumberOfFilesInFolder(absolutePath);
+        } break;
+
         default: fmt::println("Invalid input!");
     }
+
     return 0;
 }
