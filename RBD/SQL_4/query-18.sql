@@ -1,0 +1,1 @@
+SELECT COUNT(*), e.mgr, m.ename FROM EMP e INNER JOIN EMP m ON e.mgr = m.empno GROUP BY e.mgr,m.ename;

@@ -1,0 +1,1 @@
+SELECT JOB, AVG(SAL) AS "Srednia pensja", AVG(SAL * 12 + NVL(COMM, 0)) AS "Srednia roczna pensja" FROM EMP GROUP BY JOB;

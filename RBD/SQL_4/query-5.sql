@@ -1,0 +1,1 @@
+SELECT job, AVG(sal) FROM EMP WHERE job != 'MANAGER' GROUP BY job;

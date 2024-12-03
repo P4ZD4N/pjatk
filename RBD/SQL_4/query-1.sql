@@ -1,0 +1,1 @@
+SELECT AVG(NVL(sal, 0)) AS "Srednia placa" FROM EMP;
