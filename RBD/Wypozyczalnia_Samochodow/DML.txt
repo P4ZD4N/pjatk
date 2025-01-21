@@ -1,0 +1,58 @@
+-- Tabela: Miasto
+INSERT INTO Miasto (Id, Miasto) VALUES (1, 'Warszawa');
+INSERT INTO Miasto (Id, Miasto) VALUES (2, 'Kraków');
+INSERT INTO Miasto (Id, Miasto) VALUES (3, 'Wrocław');
+
+-- Tabela: Klient
+INSERT INTO Klient (Id, Imie, Nazwisko, Numer_Prawa_Jazdy, Telefon, Email, Miasto_Id) 
+VALUES (1, 'Jan', 'Kowalski', 'B123456789', 123456789, 'jk@example.com', 1);
+INSERT INTO Klient (Id, Imie, Nazwisko, Numer_Prawa_Jazdy, Telefon, Email, Miasto_Id) 
+VALUES (2, 'Anna', 'Nowak', 'B987654321', 987654321, 'an@example.com', 2);
+INSERT INTO Klient (Id, Imie, Nazwisko, Numer_Prawa_Jazdy, Telefon, Email, Miasto_Id) 
+VALUES (3, 'Piotr', 'Wójcik', 'A112233445', 112233445, 'pw@example.com', 3);
+
+-- Tabela: Pracownik
+INSERT INTO Pracownik (Id, Imie, Nazwisko, Telefon, Email, Miasto_Id) 
+VALUES (1, 'Krzysztof', 'Lewandowski', 987654321, 'kl@example.com', 1);
+INSERT INTO Pracownik (Id, Imie, Nazwisko, Telefon, Email, Miasto_Id) 
+VALUES (2, 'Magdalena', 'Zielińska', 123456789, 'mz@example.com', 2);
+
+-- Tabela: Model
+INSERT INTO Model (Model_Id, Marka, Model, Typ) 
+VALUES (1, 'Toyota', 'Corolla', 'Sedan');
+INSERT INTO Model (Model_Id, Marka, Model, Typ) 
+VALUES (2, 'Ford', 'Focus', 'Hatchback');
+INSERT INTO Model (Model_Id, Marka, Model, Typ) 
+VALUES (3, 'BMW', 'X5', 'SUV');
+
+-- Tabela: Samochod
+INSERT INTO Samochod (Id, Rok_Produkcji, Numer_Rejestracyjny, Paliwo, Cena_Dzien, Cena_Tydzien, Cena_Miesiac) 
+VALUES (1, 2020, 'ABC123', 'Benzyna', 100.00, 600.00, 2200.00);
+INSERT INTO Samochod (Id, Rok_Produkcji, Numer_Rejestracyjny, Paliwo, Cena_Dzien, Cena_Tydzien, Cena_Miesiac) 
+VALUES (2, 2019, 'DEF456', 'Diesel', 120.00, 720.00, 2500.00);
+INSERT INTO Samochod (Id, Rok_Produkcji, Numer_Rejestracyjny, Paliwo, Cena_Dzien, Cena_Tydzien, Cena_Miesiac) 
+VALUES (3, 2022, 'GHI789', 'Hybryda', 140.00, 840.00, 2800.00);
+
+-- Tabela: Rezerwacja
+INSERT INTO Rezerwacja (Id, Pracownik_Id, Klient_Id, Data_Rozpoczecia, Data_Zakonczenia, Model_Id) 
+VALUES (1, 1, 1, TO_DATE('2025-01-10', 'YYYY-MM-DD'), TO_DATE('2025-01-20', 'YYYY-MM-DD'), 1);
+INSERT INTO Rezerwacja (Id, Pracownik_Id, Klient_Id, Data_Rozpoczecia, Data_Zakonczenia, Model_Id) 
+VALUES (2, 2, 2, TO_DATE('2025-01-12', 'YYYY-MM-DD'), TO_DATE('2025-01-18', 'YYYY-MM-DD'), 2);
+INSERT INTO Rezerwacja (Id, Pracownik_Id, Klient_Id, Data_Rozpoczecia, Data_Zakonczenia, Model_Id) 
+VALUES (3, 1, 3, TO_DATE('2025-01-15', 'YYYY-MM-DD'), TO_DATE('2025-01-25', 'YYYY-MM-DD'), 3);
+
+-- Tabela: Historia_Wypozyczen
+INSERT INTO Historia_Wypozyczen (Rezerwacja_Id, Klient_Id, Pracownik_Id, Data_Wypozyczenia, Data_Zwrotu, Uwagi, Samochod_Id, Przebieg_start, Przebieg_stop) 
+VALUES (1, 1, 1, TO_DATE('2025-01-10', 'YYYY-MM-DD'), TO_DATE('2025-01-20', 'YYYY-MM-DD'), 'Brak uwag', 1, 15000, 15200);
+INSERT INTO Historia_Wypozyczen (Rezerwacja_Id, Klient_Id, Pracownik_Id, Data_Wypozyczenia, Data_Zwrotu, Uwagi, Samochod_Id, Przebieg_start, Przebieg_stop) 
+VALUES (2, 2, 2, TO_DATE('2025-01-12', 'YYYY-MM-DD'), TO_DATE('2025-01-22', 'YYYY-MM-DD'), 'Wszystko w porządku', 2, 25000, 25200);
+INSERT INTO Historia_Wypozyczen (Rezerwacja_Id, Klient_Id, Pracownik_Id, Data_Wypozyczenia, Data_Zwrotu, Uwagi, Samochod_Id, Przebieg_start, Przebieg_stop) 
+VALUES (3, 3, 1, TO_DATE('2025-01-15', 'YYYY-MM-DD'), TO_DATE('2025-01-25', 'YYYY-MM-DD'), 'Brak uwag', 3, 30000, 30500);
+
+-- Tabela: Stan_Samochodu
+INSERT INTO Stan_Samochodu (Samochod_Id, Pracownik_Id, Data_Ostatniego_Przegladu, Opis_Stanu, Status_Dostepnosci) 
+VALUES (1, 1, TO_DATE('2025-01-05', 'YYYY-MM-DD'), 'Bardzo dobry stan', 1);
+INSERT INTO Stan_Samochodu (Samochod_Id, Pracownik_Id, Data_Ostatniego_Przegladu, Opis_Stanu, Status_Dostepnosci) 
+VALUES (2, 2, TO_DATE('2025-01-10', 'YYYY-MM-DD'), 'Dobry stan', 1);
+INSERT INTO Stan_Samochodu (Samochod_Id, Pracownik_Id, Data_Ostatniego_Przegladu, Opis_Stanu, Status_Dostepnosci) 
+VALUES (3, 1, TO_DATE('2025-01-12', 'YYYY-MM-DD'), 'Bardzo dobry stan', 1);

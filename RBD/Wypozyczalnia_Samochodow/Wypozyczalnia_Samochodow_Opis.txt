@@ -1,0 +1,15 @@
+Baza danych dla wypożyczalni samochodów
+
+Wypożyczalnia samochodów tworzy bazę danych, aby usprawnić zarządzanie flotą pojazdów, rezerwacjami, danymi klientów oraz pracowników.
+Samochody dostępne do wypożyczenia są zróżnicowane pod względem typu, marki, modelu oraz specyfikacji technicznych. 
+Każdy samochód może być wypożyczany na różne okresy i ma unikalny numer rejestracyjny. Klienci wypożyczalni posiadają swoje indywidualne dane, a także historię wypożyczeń.
+Pracownicy posiadają swoje indywidualne dane.
+
+W bazie mają być przechowywane następujące informacje:
+- Samochody, wraz z ich specyfikacjami technicznymi  takimi jak marka, model czy typ,
+- Rezerwacje samochodów, obejmujące pracownika, który obsługiwał rezerwację, daty wypożyczenia i zwrotu, klienta, który zarezerwował pojazd oraz samochód, który został wypożyczony,
+- Pracownicy i ich dane osobowe,
+- Klienci i ich dane osobowe,
+- Historia wypożyczeń, obejmująca każdą rezerwację, jej date oraz ewentualne uwagi dotyczące stanu samochodu przy zwrocie oraz pracownika, który obsługiwał zwrot,
+- Dostępność samochodów, wskazująca, czy pojazd jest aktualnie dostępny, czy wypożyczony,
+- Ceny za wypożyczenie, zależne od typu pojazdu i okresu wynajmu.

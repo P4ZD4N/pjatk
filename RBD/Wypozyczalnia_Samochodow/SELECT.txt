@@ -1,0 +1,160 @@
+Polecenia z warunkiem WHERE
+
+1. Wyświetl imiona i nazwiska oraz date rozpoczęcia i date zakończenia rezerwacji klientów, którzy dokonali rezerwacji między 10 stycznia 2025 (włącznie) i 13 stycznia 2025 roku (włącznie).
+
+SELECT klient.Imie, klient.Nazwisko, rezerwacja.Data_Rozpoczecia, rezerwacja.Data_Zakonczenia
+FROM Klient klient
+INNER JOIN Rezerwacja rezerwacja ON klient.Id = rezerwacja.Klient_Id
+WHERE rezerwacja.Data_Rozpoczecia >= TO_DATE('2025-01-10', 'YYYY-MM-DD') 
+  AND rezerwacja.Data_Rozpoczecia <= TO_DATE('2025-01-13', 'YYYY-MM-DD');
+
+2. Wyświetl ID rezerwacji, daty wypożyczeń oraz numery samochodów, które zostały wypożyczone, ale nie zostały jeszcze zwrócone.
+
+SELECT historia_wypozyczen.Rezerwacja_Id, samochod.Numer_Rejestracyjny, historia_wypozyczen.Data_Wypozyczenia
+FROM Historia_Wypozyczen historia_wypozyczen
+INNER JOIN Samochod samochod ON historia_wypozyczen.Samochod_Id = samochod.Id
+WHERE historia_wypozyczen.Data_Zwrotu IS NULL;
+
+3. Wyświetl imiona, nazwiska i miasta pracowników, którzy mieszkają w mieście innym niż Warszawa
+
+SELECT pracownik.Imie, pracownik.Nazwisko, miasto.Miasto
+FROM Pracownik pracownik
+INNER JOIN Miasto miasto ON pracownik.Miasto_Id = miasto.Id
+WHERE miasto.Miasto != 'Warszawa';
+
+4. Wyświetl informacje o samochodach, których cena wypożyczenia za dzień jest wyższa niż 120 i paliwem nie jest diesel.
+
+SELECT *
+FROM Samochod 
+WHERE Cena_Dzien > 120 AND Paliwo != 'Diesel';
+
+5. Wyświetl imie, nazwisko oraz numer prawa jazdy klientów, których numer prawa jazdy zaczyna się od litery 'B'
+
+SELECT Imie, Nazwisko, Numer_Prawa_Jazdy
+FROM Klient
+WHERE Numer_Prawa_Jazdy LIKE 'B%';
+
+Polecenia ze złączeniem tabel
+
+1. Wyświetl ID i daty rezerwacji wraz z imionami i nazwiskami klientów, którzy tych rezerwacji dokonali.
+
+SELECT r.Id AS Rezerwacja_Id, k.Imie AS Klient_Imie, k.Nazwisko AS Klient_Nazwisko, r.Data_Rozpoczecia, r.Data_Zakonczenia
+FROM Rezerwacja r
+INNER JOIN Klient k ON r.Klient_Id = k.Id;
+
+2. Wyświetl historie wypożyczeń zawierającą informację o ID rezerwazji, imionach i nazwiskach pracowników oraz numerach rejestracyjnych samochodów, które zostały wówczas wypożyczone.
+
+SELECT h.Rezerwacja_Id, p.Imie AS Pracownik_Imie, p.Nazwisko AS Pracownik_Nazwisko, s.Numer_Rejestracyjny
+FROM Historia_Wypozyczen h
+INNER JOIN Pracownik p ON h.Pracownik_Id = p.Id
+INNER JOIN Samochod s ON h.Samochod_Id = s.Id;
+
+3. Wyświetl listę samochodów zawierającą numery rejestracyjne samochodów wraz z ich statusami dostępności, opisami stanu oraz ostatnimi przeglądami.
+
+SELECT s.Numer_Rejestracyjny, ss.Opis_Stanu, ss.Status_Dostepnosci, ss.Data_Ostatniego_Przegladu
+FROM Samochod s
+INNER JOIN Stan_Samochodu ss ON s.Id = ss.Samochod_Id;
+
+4. Wyświetl pracowników i klientów, którzy pochodzą z ich miast.
+
+SELECT p.Imie AS Pracownik_Imie, p.Nazwisko AS Pracownik_Nazwisko, k.Imie AS Klient_Imie, k.Nazwisko AS Klient_Nazwisko
+FROM Pracownik p
+INNER JOIN Klient k ON p.Miasto_Id = k.Miasto_Id;
+
+5. Wyświetl id rezerwacji oraz informacje o marce i modelu, który został wówczas zarezerwowany.
+
+SELECT r.Id AS Rezerwacja_Id, m.Marka, m.Model
+FROM Rezerwacja r
+INNER JOIN Model m ON r.Model_Id = m.Model_Id;
+
+Polecenia z klauzulą GROUP BY oraz HAVING
+
+1. Wyświetl liczbę rezerwacji dokonanych przez każdego pracownika.
+
+SELECT p.Imie, p.Nazwisko, COUNT(r.Id) AS Liczba_Rezerwacji
+FROM Pracownik p
+INNER JOIN Rezerwacja r ON p.Id = r.Pracownik_Id
+GROUP BY p.Imie, p.Nazwisko;
+
+2. Wyświetl miasta i liczby klientów z tych miast, w których liczba klientów jest równa 1
+
+SELECT m.Miasto, COUNT(k.Id) AS Liczba_Klientow
+FROM Klient k
+INNER JOIN Miasto m ON k.Miasto_Id = m.Id
+GROUP BY m.Miasto
+HAVING COUNT(k.Id) = 1;
+
+3. Wyświetl liczbę samochodów w każdym stanie dostępu grupując je po statusie
+
+SELECT ss.Status_Dostepnosci, COUNT(s.Id) AS Liczba_Samochodow
+FROM Samochod s
+INNER JOIN Stan_Samochodu ss ON s.Id = ss.Samochod_Id
+GROUP BY ss.Status_Dostepnosci;
+
+4. Wyświetl średnią cenę wynajmu samochodu dla każdego typu paliwa, ale tylko jeśli średnia cena przekracza 120
+
+SELECT s.Paliwo, AVG(s.Cena_Dzien) AS Srednia_Cena
+FROM Samochod s
+GROUP BY s.Paliwo
+HAVING AVG(s.Cena_Dzien) > 120;
+
+5. Wyświetl łączną liczbe dni rezerwacji dla każdego klienta, którego rezerwacja trwała więcej niż 7 dni
+
+SELECT k.Id, k.Imie, k.Nazwisko, SUM(r.Data_Zakonczenia - r.Data_Rozpoczecia) AS Laczna_Liczba_Dni
+FROM Klient k
+INNER JOIN Rezerwacja r ON k.Id = r.Klient_Id
+GROUP BY k.Id, k.Imie, k.Nazwisko
+HAVING SUM(r.Data_Zakonczenia - r.Data_Rozpoczecia) > 7;
+
+Polecenia z podzapytaniami
+
+1. Wyświetl imiona i nazwiska pracowników, którzy obsługują samochody, których cena za dzień przekracza 120.
+
+SELECT p.Imie, p.Nazwisko
+FROM Pracownik p
+WHERE p.Id IN (
+    SELECT ss.Pracownik_Id
+    FROM Stan_Samochodu ss
+    INNER JOIN Samochod s ON ss.Samochod_Id = s.Id
+    WHERE s.Cena_Dzien > 120
+);
+
+2. Wyświetl imiona i nazwiska klientów, którzy rozpoczęli rezerwacje samochodów po 10 stycznia 2025 roku
+
+SELECT k.Imie, k.Nazwisko
+FROM Klient k
+WHERE k.Id IN (
+    SELECT r.Klient_Id
+    FROM Rezerwacja r
+    WHERE r.Data_Rozpoczecia > TO_DATE('2025-01-10', 'YYYY-MM-DD')
+);
+
+3. Wyświetl imiona, nazwiska i miasta klientów z miast, w których mieszka co najmniej jeden pracownik
+
+SELECT k.Imie, k.Nazwisko, k.Miasto_Id
+FROM Klient k
+WHERE k.Miasto_Id IN (
+    SELECT DISTINCT p.Miasto_Id
+    FROM Pracownik p
+);
+
+4. Wyświetl id i cenę wynajmu za dzień samochodów, które mają większą cenę wynajmu za dzień niż średnia cena wynajmu za dzień
+
+SELECT s.Id, s.Cena_Dzien
+FROM Samochod s
+WHERE s.Cena_Dzien > (
+    SELECT AVG(Cena_Dzien)
+    FROM Samochod
+);
+
+5. Wyświetl id rezerwacji, dane klientów oraz id samochodu dla wszystkich wypożyczeń, które dotyczyły samochodów wyprodukowanych najwcześniej w 2020 roku
+
+SELECT h.Rezerwacja_Id, k.Imie, K.Nazwisko, s.Id AS "SAMOCHOD_ID"
+FROM Historia_Wypozyczen h
+INNER JOIN Samochod s ON h.Samochod_Id = s.Id
+INNER JOIN Klient k ON h.Klient_Id = k.Id
+WHERE h.Samochod_Id IN (
+    SELECT Id
+    FROM Samochod
+    WHERE Rok_Produkcji > 2019
+);
