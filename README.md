@@ -14,6 +14,7 @@ This repo contains only solutions of tasks related to software engineering. Whil
 - **SKJ** - Computer Networks and Network Programming in Java / Sieci komputerowe i programowanie sieciowe w języku Java
 - **SOP** - Operating systems / Systemy operacyjne
 - **WSI** - Introduction to Information Systems / Wprowadzenie do systemów informacyjnych
+- **GRK** - Computer graphics / Grafika komputerowa
 
 
 
