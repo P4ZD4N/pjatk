@@ -15,6 +15,6 @@ This repo contains only solutions of tasks related to software engineering. Whil
 - **SOP** - Operating systems / Systemy operacyjne
 - **WSI** - Introduction to Information Systems / Wprowadzenie do systemów informacyjnych
 - **GRK** - Computer graphics / Grafika komputerowa
-
+- **UTP** - Universal Programming Techniques / Uniwersalne Techniki Programowania
 
 
