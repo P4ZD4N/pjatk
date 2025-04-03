@@ -1,4 +1,3 @@
-
 CREATE PROCEDURE InsertNewDepartment
     @DeptName VARCHAR(20),
     @DeptLoc VARCHAR(20)
